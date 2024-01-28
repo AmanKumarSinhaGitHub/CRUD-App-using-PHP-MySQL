@@ -5,17 +5,17 @@ $username = "root";
 $password = "";
 $database = "crud";
 
-// Create connection to Database
+// Create a connection to the database
 $conn = new mysqli($servername, $username, $password, $database);
 
-// Check if connected to Database or not
+// Check if the database connection is successful
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
 // Check if the form is submitted using the POST method
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  
+if (isset($_POST["submit"])) {
+
   // Retrieve user inputs from the form
   $name = $_POST['name'];
   $email = $_POST['email'];
@@ -25,17 +25,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Validate if all fields are filled
   if (empty($name) || empty($email) || empty($mobile) || empty($password)) {
     echo "All fields are required";
-  } 
-  
-  else {
+  } else {
     // Construct SQL query to insert data into the 'userdetails' table
     $sql = "INSERT INTO `userdetails` (`name`, `email`, `mobile`, `password`) VALUES ('$name', '$email', '$mobile', '$password')";
 
     // Execute the SQL query
-    if ($conn->query($sql) === TRUE) {
+    $result = $conn->query($sql);
+
+    // Check if the query execution was successful
+    if ($result) {
       echo "New record created successfully";
     } else {
-      // Display an error message if the query fails
       echo "Error: " . $sql . "<br>" . $conn->error;
     }
   }
@@ -71,8 +71,8 @@ $conn->close();
       <h2>CRUD OPERATIONS</h2>
     </div>
 
-    <!-- POST method -->
-    <form method="post"> 
+    <!-- Form with POST method to submit data to PHP -->
+    <form method="post">
 
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
@@ -81,6 +81,7 @@ $conn->close();
 
       <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
+        <!-- 'name' attribute is used to identify this input field in PHP -->
         <input type="email" class="form-control" name="email" id="email" placeholder="Enter Your Email address" aria-describedby="emailHelp">
       </div>
 
@@ -94,7 +95,7 @@ $conn->close();
         <input type="password" class="form-control" name="password" id="password" placeholder="Enter Your Password">
       </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" name="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
 
