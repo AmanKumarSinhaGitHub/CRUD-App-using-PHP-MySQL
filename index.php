@@ -30,7 +30,7 @@ if (isset($_POST["submit"])) {
     $sql = "INSERT INTO `userdetails` (`name`, `email`, `mobile`, `password`) VALUES ('$name', '$email', '$mobile', '$password')";
 
     // Execute the SQL query
-    $result = $conn->query($sql);
+    $result = mysqli_query($conn, $sql);
 
     // Check if the query execution was successful
     if ($result) {
