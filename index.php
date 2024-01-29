@@ -9,8 +9,8 @@ $database = "crud";
 $conn = new mysqli($servername, $username, $password, $database);
 
 // Check if the database connection is successful
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+if (!$conn) {
+  die("Connection Error". mysqli_error($conn));
 }
 
 // Check if the form is submitted using the POST method
@@ -30,13 +30,13 @@ if (isset($_POST["submit"])) {
     $sql = "INSERT INTO `userdetails` (`name`, `email`, `mobile`, `password`) VALUES ('$name', '$email', '$mobile', '$password')";
 
     // Execute the SQL query
-    $result = $conn->query($sql);
+    $result = mysqli_query($conn, $sql);
 
     // Check if the query execution was successful
     if ($result) {
       echo "New record created successfully";
     } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
+      die(mysqli_error($conn));
     }
   }
 }
