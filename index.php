@@ -36,7 +36,7 @@ if (isset($_POST["submit"])) {
     if ($result) {
       echo "New record created successfully";
     } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
+      die(mysqli_error($conn));
     }
   }
 }
