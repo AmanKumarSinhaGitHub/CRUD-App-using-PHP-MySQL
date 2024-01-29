@@ -1,17 +1,6 @@
 <?php
-// Database connection parameters
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "crud";
-
-// Create a connection to the database
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Check if the database connection is successful
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+// Connect to Database
+include("connect.php");
 
 // Check if the form is submitted using the POST method
 if (isset($_POST["submit"])) {
@@ -30,13 +19,14 @@ if (isset($_POST["submit"])) {
     $sql = "INSERT INTO `userdetails` (`name`, `email`, `mobile`, `password`) VALUES ('$name', '$email', '$mobile', '$password')";
 
     // Execute the SQL query
-    $result = $conn->query($sql);
+    $result = mysqli_query($conn, $sql);
 
     // Check if the query execution was successful
     if ($result) {
-      echo "New record created successfully";
+      // Redirect to 'display-user.php'
+      header("location:display-user.php");
     } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
+      die(mysqli_error($conn));
     }
   }
 }
@@ -68,7 +58,7 @@ $conn->close();
   <div class="container py-5 px-5">
 
     <div class="container text-center py-3">
-      <h2>CRUD OPERATIONS</h2>
+      <h2>CRUD OPERATIONS • Insert Data</h2>
     </div>
 
     <!-- Form with POST method to submit data to PHP -->
