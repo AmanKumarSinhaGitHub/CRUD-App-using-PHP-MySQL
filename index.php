@@ -9,8 +9,8 @@ $database = "crud";
 $conn = new mysqli($servername, $username, $password, $database);
 
 // Check if the database connection is successful
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+if (!$conn) {
+  die("Connection Error". mysqli_error($conn));
 }
 
 // Check if the form is submitted using the POST method
