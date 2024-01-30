@@ -19,6 +19,9 @@ include("connect.php");
     body {
       background-color: gainsboro;
     }
+    a{
+      text-decoration: none;
+    }
   </style>
 
   <div class="container py-5 px-5">
@@ -40,6 +43,7 @@ include("connect.php");
             <th scope="col">Email</th>
             <th scope="col">Mobile</th>
             <th scope="col">Password</th>
+            <th scope="col">Operations</th>
           </tr>
         </thead>
 
@@ -70,6 +74,10 @@ include("connect.php");
                   <td>' . $email . '</td>
                   <td>' . $mobile . '</td>
                   <td>' . $password . '</td>
+                  // Delete Operation
+                  <td>
+                    <button class="btn btn-danger"><a href="delete.php?deleteID='.$id.'" class="text-light">Delete</a></button>
+                  </td>
                 </tr>';
             }
           }
