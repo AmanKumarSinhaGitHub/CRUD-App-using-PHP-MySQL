@@ -74,7 +74,7 @@ include("connect.php");
                   <td>' . $email . '</td>
                   <td>' . $mobile . '</td>
                   <td>' . $password . '</td>
-                  // Delete Operation
+                  <!-- Delete Operation -->
                   <td>
                     <button class="btn btn-danger"><a href="delete.php?deleteID='.$id.'" class="text-light">Delete</a></button>
                   </td>
