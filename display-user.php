@@ -23,20 +23,23 @@ include("connect.php");
     a {
       text-decoration: none;
     }
-    
   </style>
 
   <div class="container py-5 px-5">
 
     <div class="container text-center py-3">
-      <h2>CRUD OPERATIONS • Display Data</h2>
+      <h2>Display Data</h2>
     </div>
 
-    <div class="container px-5">
-      <button class="btn btn-primary"> <a href="add-user.php" class="text-light"> Add User</a> </button>
+    <div class="container px-5 d-flex justify-content-center">
+      <button class="btn btn-primary"> <a href="add-user.php" class="text-light">Add User</a> </button>
     </div>
 
-    <div class="container py-5 px-5">
+
+  </div>
+
+  <div class="container py-5 px-5">
+    <div class="table-responsive">
       <table class="table table-striped">
         <thead>
           <tr>
@@ -45,7 +48,8 @@ include("connect.php");
             <th scope="col">Email</th>
             <th scope="col">Mobile</th>
             <th scope="col">Password</th>
-            <th scope="col">Operations</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
 
@@ -80,6 +84,9 @@ include("connect.php");
                   <td>
                   <!-- Update Operation -->
                   <button class="btn btn-primary"><a href="update.php?updateID=' . $id . '" class="text-light">Update</a></button>
+                  </td>
+
+                  <td>
                   <!-- Delete Operation -->
                   <button class="btn btn-danger"><a href="delete.php?deleteID=' . $id . '" class="text-light">Delete</a></button>
                   </td>
@@ -90,7 +97,6 @@ include("connect.php");
         </tbody>
       </table>
     </div>
-
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
