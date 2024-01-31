@@ -1,6 +1,4 @@
 <?php
-
-// Include the database connection file
 include("connect.php");
 
 // Get the user ID to be updated from the URL parameter
@@ -26,28 +24,23 @@ if (isset($_POST["submit"])) {
   $mobile = $_POST['mobile'];
   $password = $_POST['password'];
 
-  // Validate if all fields are filled
   if (empty($name) || empty($email) || empty($mobile) || empty($password)) {
     echo "All fields are required";
   } else {
     // Construct SQL query to update user data in the 'userdetails' table
     $sql = "UPDATE `userdetails` SET `id`='$id',`name`='$name',`email`='$email',`mobile`='$mobile',`password`='$password' WHERE `id`='$id'";
 
-    // Execute the SQL query
     $result = mysqli_query($conn, $sql);
 
     // Check if the update was successful
     if ($result) {
-      // Redirect to the display-user.php page after the update
       header("location:display-user.php");
     } else {
-      // Display an error message and terminate the script
       die(mysqli_error($conn));
     }
   }
 }
 
-// Close the database connection
 $conn->close();
 ?>
 
