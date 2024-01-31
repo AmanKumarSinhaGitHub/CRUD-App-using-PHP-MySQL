@@ -4,6 +4,16 @@ include("connect.php");
 
 $id = $_GET['updateID'];
 
+$sql = "SELECT * FROM userdetails WHERE `userdetails`.`id` = $id";
+$result = mysqli_query($conn, $sql);
+
+$row = mysqli_fetch_assoc($result);
+$name = $row['name'];
+$email = $row['email'];
+$mobile = $row['mobile'];
+$password = $row['password'];
+
+
 if (isset($_POST["submit"])) {
 
   // Retrieve user inputs from the form
@@ -63,23 +73,23 @@ $conn->close();
 
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
-        <input type="name" class="form-control" name="name" id="name" placeholder="Enter Your Name">
+        <input type="name" class="form-control" name="name" id="name" placeholder="Enter Your Name" value="<?php echo $name; ?>">
       </div>
 
       <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
         <!-- 'name' attribute is used to identify this input field in PHP -->
-        <input type="email" class="form-control" name="email" id="email" placeholder="Enter Your Email address" aria-describedby="emailHelp">
+        <input type="email" class="form-control" name="email" id="email" placeholder="Enter Your Email address" aria-describedby="emailHelp" value="<?php echo $email; ?>">
       </div>
 
       <div class="mb-3">
         <label for="mobile" class="form-label">Mobile Number</label>
-        <input type="number" class="form-control" name="mobile" id="mobile" placeholder="Enter Your Mobile Number">
+        <input type="number" class="form-control" name="mobile" id="mobile" placeholder="Enter Your Mobile Number" value="<?php echo $mobile; ?>">
       </div>
 
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" name="password" id="password" placeholder="Enter Your Password">
+        <input type="password" class="form-control" name="password" id="password" placeholder="Enter Your Password" value="<?php echo $password; ?>">
       </div>
 
       <button type="submit" name="submit" class="btn btn-primary">Update</button>
