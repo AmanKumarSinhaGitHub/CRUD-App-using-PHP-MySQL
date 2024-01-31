@@ -23,6 +23,7 @@ include("connect.php");
     a {
       text-decoration: none;
     }
+    
   </style>
 
   <div class="container py-5 px-5">
