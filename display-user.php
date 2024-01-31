@@ -19,7 +19,8 @@ include("connect.php");
     body {
       background-color: gainsboro;
     }
-    a{
+
+    a {
       text-decoration: none;
     }
   </style>
@@ -74,9 +75,12 @@ include("connect.php");
                   <td>' . $email . '</td>
                   <td>' . $mobile . '</td>
                   <td>' . $password . '</td>
-                  // Delete Operation
+                  
                   <td>
-                    <button class="btn btn-danger"><a href="delete.php?deleteID='.$id.'" class="text-light">Delete</a></button>
+                  <!-- Update Operation -->
+                  <button class="btn btn-primary"><a href="update.php?updateID=' . $id . '" class="text-light">Update</a></button>
+                  <!-- Delete Operation -->
+                  <button class="btn btn-danger"><a href="delete.php?deleteID=' . $id . '" class="text-light">Delete</a></button>
                   </td>
                 </tr>';
             }
