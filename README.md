@@ -1,7 +1,7 @@
 ﻿# CRUD-App-using-PHP-MySQL
 
 
-### [Live Preview - Click to Open](https://php-mysql-crud-app.000webhostapp.com/index.php)
+### [Live Preview - Click to Open](https://php-mysql-crud-app.000webhostapp.com)
 
 ![Preview Image](https://github.com/AmanKumarSinhaGitHub/CRUD-App-using-PHP-MySQL/assets/65329366/fdd01fae-afc0-4543-a542-9db27913dea2)
 
