@@ -200,3 +200,7 @@ git checkout delete-data
 git checkout update-data
 ```
 
+
+# More
+Upload Img in DB and Display it
+[Repo Link](https://github.com/AmanKumarSinhaGitHub/Image-Upload-and-Display-using-PHP-MySQL)
