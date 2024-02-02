@@ -38,7 +38,7 @@ Before you begin, make sure you have the following installed:
      `mobile` varchar(15) NOT NULL,
      `password` varchar(255) NOT NULL,
      PRIMARY KEY (`id`)
-   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+   );
    ```
 
 3. **Using a MySQL Database Management Tool (e.g., phpMyAdmin):**
@@ -63,7 +63,7 @@ Before you begin, make sure you have the following installed:
      `mobile` varchar(15) NOT NULL,
      `password` varchar(255) NOT NULL,
      PRIMARY KEY (`id`)
-   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+   );
    ```
 
    This will create the `userdetails` table with the specified structure in the `crud` database.
@@ -199,3 +199,4 @@ git checkout delete-data
 ```bash
 git checkout update-data
 ```
+
