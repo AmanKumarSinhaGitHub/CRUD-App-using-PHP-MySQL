@@ -3,7 +3,9 @@
 
 ### [Live Preview - Click to Open](https://php-mysql-crud-app.000webhostapp.com)
 
-![Preview Image](https://github.com/AmanKumarSinhaGitHub/CRUD-App-using-PHP-MySQL/assets/65329366/fdd01fae-afc0-4543-a542-9db27913dea2)
+![Preview](https://github.com/AmanKumarSinhaGitHub/CRUD-App-using-PHP-MySQL/assets/65329366/918d0190-eb7a-49f2-98ac-fd8add2c5f01)
+
+![Preview](https://github.com/AmanKumarSinhaGitHub/CRUD-App-using-PHP-MySQL/assets/65329366/9eb94df4-cd39-41af-95b5-5d3a54232230)
 
 
 Before you begin, make sure you have the following installed:
