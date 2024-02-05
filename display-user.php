@@ -44,6 +44,7 @@ include("connect.php");
         <thead>
           <tr>
             <th scope="col">User ID</th>
+            <th scope="col">Photo</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Mobile</th>
@@ -67,6 +68,8 @@ include("connect.php");
             while ($row = mysqli_fetch_assoc($result)) {
               // Extract individual fields from the fetched row
               $id = $row['id'];
+              // Photo
+              $photo = $row['photo'];
               $name = $row['name'];
               $email = $row['email'];
               $mobile = $row['mobile'];
@@ -76,6 +79,8 @@ include("connect.php");
               echo '
                 <tr>
                   <th scope="row">' . $id . '</th>
+                  <!-- Display user photo -->
+                  <td><img src="uploads/' . $photo . '" alt="User Photo" style="width: 75px; height: 75px;"></td>
                   <td>' . $name . '</td>
                   <td>' . $email . '</td>
                   <td>' . $mobile . '</td>

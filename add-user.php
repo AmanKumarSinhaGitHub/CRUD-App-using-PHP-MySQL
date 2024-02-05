@@ -10,13 +10,21 @@ if (isset($_POST["submit"])) {
   $email = $_POST['email'];
   $mobile = $_POST['mobile'];
   $password = $_POST['password'];
+  
+  // File upload handling
+  $photo = $_FILES['photo']['name'];          // Get the original name of the uploaded file
+  $temp_name = $_FILES['photo']['tmp_name'];  // Get the temporary name assigned to the file by the server
+  $folder = "uploads/";                       // Set the folder where uploaded files will be stored
+
+  // Move the uploaded file from the temporary location to the specified folder
+  move_uploaded_file($temp_name, $folder . $photo);
 
   // Validate if all fields are filled
-  if (empty($name) || empty($email) || empty($mobile) || empty($password)) {
+  if (empty($name) || empty($email) || empty($mobile) || empty($password) || empty($photo)) {
     echo "All fields are required";
   } else {
     // Construct SQL query to insert data into the 'userdetails' table
-    $sql = "INSERT INTO `userdetails` (`name`, `email`, `mobile`, `password`) VALUES ('$name', '$email', '$mobile', '$password')";
+    $sql = "INSERT INTO `userdetails` (`name`, `email`, `mobile`, `password`, `photo`) VALUES ('$name', '$email', '$mobile', '$password', '$photo')";
 
     // Execute the SQL query
     $result = mysqli_query($conn, $sql);
@@ -62,7 +70,17 @@ $conn->close();
     </div>
 
     <!-- Form with POST method to submit data to PHP -->
-    <form method="post">
+    <!-- Add this line to work with images  -->
+    <!-- enctype="multipart/form-data" -->
+    <form method="post" enctype="multipart/form-data">
+
+      <!-- Input field for user's photo -->
+      <div class="mb-3">
+        <label for="photo" class="form-label">Photo</label>
+        <!-- Input type set to "file" for handling file uploads -->
+        <!-- Accept attribute set to "image/*" to restrict file types to images -->
+        <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
+      </div>
 
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
