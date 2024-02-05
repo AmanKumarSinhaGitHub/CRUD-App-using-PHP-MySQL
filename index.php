@@ -22,15 +22,20 @@
     <div class="container text-center py-3">
       <h2>CRUD App using PHP MySQL</h2>
     </div>
-
+    <hr>
     <div class="container d-flex justify-content-center align-items-center py-5">
       <a href="add-user.php" class="btn btn-primary">Add Users</a>
     </div>
 
+    <div class="container d-flex justify-content-center align-items-center ">
+      <a href="display-user.php" class="btn btn-primary">Display Users</a>
+    </div>
+
   </div>
 
-  <div class="container d-flex justify-content-center align-items-center py-5">
-    <a href="https://github.com/AmanKumarSinhaGitHub/CRUD-App-using-PHP-MySQL" target="_blank" class="btn btn-danger">&copy Aman Kumar Sinha</a>
+  <hr>
+  <div class="container d-flex justify-content-center align-items-center py-3">
+    <a href="https://github.com/AmanKumarSinhaGitHub/CRUD-App-using-PHP-MySQL" target="_blank" class="text-black fw-bold">&copy Aman Kumar Sinha</a>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
