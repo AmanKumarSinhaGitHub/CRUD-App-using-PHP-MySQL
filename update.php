@@ -1,4 +1,5 @@
 <?php
+// Include the file containing the database connection details
 include("connect.php");
 
 // Get the user ID to be updated from the URL parameter
@@ -14,6 +15,7 @@ $name = $row['name'];
 $email = $row['email'];
 $mobile = $row['mobile'];
 $password = $row['password'];
+$photo = $row['photo']; // Added line to retrieve the existing photo filename
 
 // Check if the update form is submitted
 if (isset($_POST["submit"])) {
@@ -24,11 +26,23 @@ if (isset($_POST["submit"])) {
   $mobile = $_POST['mobile'];
   $password = $_POST['password'];
 
+  // File upload handling
+  $newPhoto = $_FILES['new_photo']['name']; // Get the name of the uploaded file
+  $tempName = $_FILES['new_photo']['tmp_name']; // Get the temporary name assigned to the file by the server
+  $folder = "uploads/"; // Set the folder where uploaded files will be stored
+
+  // If a new photo is provided, update the photo filename
+  if (!empty($newPhoto)) {
+    // Move the uploaded file from the temporary location to the specified folder
+    move_uploaded_file($tempName, $folder . $newPhoto);
+    $photo = $newPhoto; // Update the photo filename
+  }
+
   if (empty($name) || empty($email) || empty($mobile) || empty($password)) {
     echo "All fields are required";
   } else {
     // Construct SQL query to update user data in the 'userdetails' table
-    $sql = "UPDATE `userdetails` SET `id`='$id',`name`='$name',`email`='$email',`mobile`='$mobile',`password`='$password' WHERE `id`='$id'";
+    $sql = "UPDATE `userdetails` SET `id`='$id',`name`='$name',`email`='$email',`mobile`='$mobile',`password`='$password', `photo`='$photo' WHERE `id`='$id'";
 
     $result = mysqli_query($conn, $sql);
 
@@ -70,12 +84,20 @@ $conn->close();
     </div>
 
     <!-- Form with POST method to submit data to PHP -->
-    <form method="post">
+    <!-- Add this line -->
+    <!-- enctype="multipart/form-data" -->
+    <form method="post" enctype="multipart/form-data">
 
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
         <!-- Input field for name with pre-filled value from PHP -->
         <input type="name" class="form-control" name="name" id="name" placeholder="Enter Your Name" value="<?php echo $name; ?>">
+      </div>
+
+      <div class="mb-3">
+        <label for="new_photo" class="form-label">New Photo</label>
+        <!-- Input field for a new photo -->
+        <input type="file" class="form-control" name="new_photo" id="new_photo" accept="image/*">
       </div>
 
       <div class="mb-3">
